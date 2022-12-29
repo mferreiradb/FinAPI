@@ -2,7 +2,7 @@
 
 *Requisitos*
 
-- [V] Deve ser possivel criar uma consta
+- [x] Deve ser possivel criar uma consta
 - [] Deve ser possivel buscar o extrato bancário
 - [] Deve ser possivel realizar um deposito
 - [] Deve ser possivel realizar um saque
@@ -14,7 +14,7 @@
 
 *Regras de negocio*
 
-- [V] Não deve ser possivel cadastrar uma conta com CPF ja existente
+- [x] Não deve ser possivel cadastrar uma conta com CPF ja existente
 - [] Não deve ser possivel fazer deposito em uma contat nao existente
 - [] Não deve ser possivel buscar o extrato em uma conta nao existente
 - [] Não deve ser possivel fazer um saque em uma conta nao existente
