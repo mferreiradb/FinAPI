@@ -20,3 +20,15 @@
 - Não deve ser possivel fazer um saque em uma conta nao existente
 - Não deve ser possivel excluir uma conta nao existente
 - Não deve ser possivel fazer saque quando o saldo for insuficiente
+
+*Dependencias*
+
+- Nodemon
+
+        npm i -g nodemon
+
+        npm i -D nodemon
+
+- Express
+
+        npm i express
