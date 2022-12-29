@@ -4,7 +4,7 @@
 
 - [x] Deve ser possivel criar uma consta
 
-- [] Deve ser possivel buscar o extrato bancário
+- [x] Deve ser possivel buscar o extrato bancário
 
 - [] Deve ser possivel realizar um deposito
 
@@ -26,7 +26,7 @@ cliente
 
 - [x] Não deve ser possivel cadastrar uma conta com CPF ja existente
 
-- [] Não deve ser possivel fazer deposito em uma contat nao existente
+- [] Não deve ser possivel fazer deposito em uma conta nao existente
 
 - [] Não deve ser possivel buscar o extrato em uma conta nao existente
 
