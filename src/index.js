@@ -1,32 +1,45 @@
 const express = require("express");
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.json({msg: "Online"})
-})
+app.get("/", (req, res) => {
+  res.json({ msg: "Online" });
+});
 
-app.post('/create/acount', (req, res) => {
-  const { name, cpf } = req.body
-  const cpfList = ["05371957340"]
-  if (cpfList.length == 0 || null) {
-    cpfList.push(cpf)
-    console.log(cpfList)
-    return res.json({cpfList: cpfList})
+app.post("/create/acount", (req, res) => {
+  const { name, cpf } = req.body;
+  const user = { name, cpf };
+  const users = [
+    {
+      name: "Mauricio",
+      cpf: "05371957340",
+    },
+  ];
+
+  if (users.length == 0) {
+    users.push(user);
+    console.log(users);
+    return res.json([
+      { msg: "Titular cadastrado com sucesso" },
+      { users: users },
+    ]);
   } else {
-    for (let CPF in cpfList) {
-      if (cpf == cpfList[CPF]) {
-        console.log('CPF já cadastrado')
-        return res.json({erro: 'CPF já cadastrado. Tente com um novo CPF!'})
+    for (let User in users) {
+      if (User.cpf == user[cpf]) {
+        console.log("Titular já cadastrado");
+        return res.json({ erro: "Titular já cadastrado. Tente com um novo titular!" });
       } else {
-        cpfList.push(cpf)
-        console.log(cpfList)
-        return res.json([{msg: 'CPF cadastrado com sucesso'}, {cpfList: cpfList}])
+        users.push(user);
+        console.log(users);
+        return res.json([
+          { msg: "Titular cadastrado com sucesso" },
+          { users: users },
+        ]);
       }
     }
   }
-})
+});
 
 app.listen(8080, () => {
   console.log("Servidor online na url http://localhost:8080");
