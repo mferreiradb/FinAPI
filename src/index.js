@@ -33,8 +33,8 @@ app.post("/create/acount", (req, res) => {
   }
 });
 
-app.get('/statement/:cpf', (req, res) => {
-  const { cpf } = req.params
+app.get('/statement/', (req, res) => {
+  const { cpf } = req.headers
   const cust = customers.some((customer) => customer.cpf == cpf)
 
   if (cust) {
