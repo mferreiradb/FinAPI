@@ -18,11 +18,11 @@ app.post('/create/acount', (req, res) => {
     for (let CPF in cpfList) {
       if (cpf == cpfList[CPF]) {
         console.log('CPF já cadastrado')
-        return res.json({erro: 'CPF já cadastrado'})
+        return res.json({erro: 'CPF já cadastrado. Tente com um novo CPF!'})
       } else {
-        cpfList.push(CPF)
+        cpfList.push(cpf)
         console.log(cpfList)
-        return res.json({cpfList: cpfList})
+        return res.json([{msg: 'CPF cadastrado com sucesso'}, {cpfList: cpfList}])
       }
     }
   }
