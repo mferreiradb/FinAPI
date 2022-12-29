@@ -26,9 +26,9 @@ cliente
 
 - [x] Não deve ser possivel cadastrar uma conta com CPF ja existente
 
-- [] Não deve ser possivel fazer deposito em uma conta nao existente
+- [x] Não deve ser possivel buscar o extrato em uma conta nao existente
 
-- [] Não deve ser possivel buscar o extrato em uma conta nao existente
+- [] Não deve ser possivel fazer deposito em uma conta nao existente
 
 - [] Não deve ser possivel fazer um saque em uma conta nao existente
 

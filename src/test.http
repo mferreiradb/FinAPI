@@ -8,4 +8,4 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/statement/05371957341
+GET http://localhost:8080/statement/0000000000

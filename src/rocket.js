@@ -30,6 +30,10 @@ app.get('/statement/:cpf', (req, res) => {
   const { cpf } = req.params
   const customer = customers.find((customer) => customer.cpf == cpf)
 
+  if (!customer) {
+    return res.status(400).json({error: "Conta não encontrada"})
+  }
+
   console.log("Statement: " + customer.statement)
   return res.json(customer.statement)
 })

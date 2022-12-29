@@ -3,7 +3,7 @@ const app = express();
 const { v4: uuid } = require('uuid')
 const id = uuid();
 
-const customers = [{name: "Mauricio", cpf: "0000000000", id, statement: ["0000000000", "11111111111111"]},];
+const customers = [{ name: "Mauricio", cpf: "0000000000", id, statement: ["0000000000", "11111111111111"] },];
 
 app.use(express.json());
 
@@ -35,10 +35,17 @@ app.post("/create/acount", (req, res) => {
 
 app.get('/statement/:cpf', (req, res) => {
   const { cpf } = req.params
-  const customer = customers.find((customer) => customer.cpf == cpf)
+  const cust = customers.some((customer) => customer.cpf == cpf)
 
-  console.log("Statement: " + customer.statement)
-  return res.json(customer.statement)
+  if (cust) {
+    const customer = customers.find((customer) => customer.cpf == cpf)
+
+    console.log("Statement: " + customer.statement)
+    return res.json(customer.statement)
+  } else {
+    console.log('Conta não encontrada');
+    return res.status(400).json({error: "Conta não encontrada"})
+  }
 })
 
 app.listen(8080, () => {
