@@ -2,7 +2,7 @@
 
 *Requisitos*
 
-[x] Deve ser possivel criar uma consta
+- [x] Deve ser possivel criar uma consta
 
 [] Deve ser possivel buscar o extrato bancário
 
@@ -24,7 +24,7 @@ cliente
 
 *Regras de negocio*
 
-[x] Não deve ser possivel cadastrar uma conta com CPF ja existente
+- [x] Não deve ser possivel cadastrar uma conta com CPF ja existente
 
 [] Não deve ser possivel fazer deposito em uma contat nao existente
 
