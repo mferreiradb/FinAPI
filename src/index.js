@@ -3,6 +3,8 @@ const app = express();
 const { v4: uuid } = require('uuid')
 const id = uuid();
 
+const costumers = [{name: "Mauricio", cpf: "05371957340", id},];
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -12,7 +14,6 @@ app.get("/", (req, res) => {
 app.post("/create/acount", (req, res) => {
   const { name, cpf } = req.body;
   const user = { name, cpf, id, statemente: [] };
-  const costumers = [{name: "Mauricio", cpf: "05371957340", id},];
 
   if (costumers.length == 0) {
     costumers.push(user);

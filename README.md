@@ -50,3 +50,23 @@
         - CPF do titular
 - Statement
         - Extrato da conta
+
+*Detalhamentos*
+
+- Validação de CPF
+        - Uso da função some() para verificar se o cpf passado pelo body já existe na base de dados
+        - A função some() faz uma iteração no array e retorna um valor booleano de acordo com a condição
+
+                app.post("/create/acount", (req, res) => {
+                const { name, cpf } = req.body;
+                const costumerExists = costumers.some((costumer) => costumer.cpf == cpf)
+
+                if (costumerExists) {
+                        console.log("Titular já cadastrado");
+                        return res.status(400).json({erro: "Titular já cadastrado. Tente com um novo titular!"});
+                } else {
+                        costumers.push({name, cpf, id: uuid(), statement: []});
+                        console.log(costumers);
+                        return res.status(201).send('Titular cadastrado com sucesso')
+                        }
+                });
