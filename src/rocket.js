@@ -26,6 +26,14 @@ app.post("/create/acount", (req, res) => {
   }
 });
 
+app.get('/statement/:cpf', (req, res) => {
+  const { cpf } = req.params
+  const customer = customers.find((customer) => customer.cpf == cpf)
+
+  console.log("Statement: " + customer.statement)
+  return res.json(customer.statement)
+})
+
 app.listen(8080, () => {
   console.log("Servidor online na url http://localhost:8080");
 });
