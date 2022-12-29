@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
   res.json({ msg: "Online" });
 });
 
-const costumers = [{ name: "Mauricio", cpf: "05371957340", id },];
+const customers = [{ name: "Mauricio", cpf: "0000000000", id, statement: ["0000000000", "11111111111111"] },];
 
 app.post("/create/acount", (req, res) => {
   const { name, cpf } = req.body;
