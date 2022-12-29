@@ -4,21 +4,21 @@
 
 - [x] Deve ser possivel criar uma consta
 
-[] Deve ser possivel buscar o extrato bancário
+- [] Deve ser possivel buscar o extrato bancário
 
-[] Deve ser possivel realizar um deposito
+- [] Deve ser possivel realizar um deposito
 
-[] Deve ser possivel realizar um saque
+- [] Deve ser possivel realizar um saque
 
-[] Deve ser possivel buscar o extrato bancario do 
+- [] Deve ser possivel buscar o extrato bancario do 
 cliente por data
 
-[] Deve ser possivel atualizar os dados da conta do 
+- [] Deve ser possivel atualizar os dados da conta do 
 cliente
 
-[] Deve ser possivel obter dados da conta o cliente
+- [] Deve ser possivel obter dados da conta o cliente
 
-[] Deve ser possivel eletar uma conta
+- [] Deve ser possivel eletar uma conta
 
 
 
@@ -26,15 +26,15 @@ cliente
 
 - [x] Não deve ser possivel cadastrar uma conta com CPF ja existente
 
-[] Não deve ser possivel fazer deposito em uma contat nao existente
+- [] Não deve ser possivel fazer deposito em uma contat nao existente
 
-[] Não deve ser possivel buscar o extrato em uma conta nao existente
+- [] Não deve ser possivel buscar o extrato em uma conta nao existente
 
-[] Não deve ser possivel fazer um saque em uma conta nao existente
+- [] Não deve ser possivel fazer um saque em uma conta nao existente
 
-[] Não deve ser possivel excluir uma conta nao existente
+- [] Não deve ser possivel excluir uma conta nao existente
 
-[] Não deve ser possivel fazer saque quando o saldo for insuficiente
+- [] Não deve ser possivel fazer saque quando o saldo for insuficiente
 
 *Dependencias*
 
