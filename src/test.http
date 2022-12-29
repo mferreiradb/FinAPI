@@ -5,3 +5,7 @@ Content-Type: application/json
   "name": "Gabriel",
   "cpf": "05371957341"
 }
+
+###
+
+GET http://localhost:8080/statement/05371957341

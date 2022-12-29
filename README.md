@@ -85,3 +85,15 @@ cliente
                         return res.status(201).send('Titular cadastrado com sucesso')
                         }
                 });
+
+- Buscar extradto
+        - Utilizada a função find() para encontrar o extrato de um determinado cliente
+        - Find retorna o primeiro elemento encontrado que cumpra as condições estabelecidas
+
+                app.get('/statement/:cpf', (req, res) => {
+                        const { cpf } = req.params
+                        const customer = customers.find((customer) => customer.cpf == cpf)
+
+                        console.log("Statement: " + customer.statement)
+                        return res.json(customer.statement)
+                })
