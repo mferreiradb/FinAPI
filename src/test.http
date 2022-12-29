@@ -2,6 +2,6 @@ POST http://localhost:8080/create/acount
 Content-Type: application/json
 
 {
-  "name": "Mauricio",
-  "cpf": "05371957340"
+  "name": "Gabriel",
+  "cpf": "05371957341"
 }

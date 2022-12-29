@@ -33,6 +33,10 @@
 
         npm i express
 
+- UUID
+
+        npm i uuid
+
 *Dados da conta*
 
 - Name
