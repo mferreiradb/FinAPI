@@ -97,3 +97,28 @@ cliente
                         console.log("Statement: " + customer.statement)
                         return res.json(customer.statement)
                 })
+
+*Middlewares*
+
+- Funções que ficam entre as requisicoes e as respostas
+
+- Utilizado para validações, por exemplo
+
+- Podem ser utilizados de duas formas
+        - Caso apenas alumas rotas devam utilizar, o middleware deve ser passado na rota, após a definição do endpoint
+        - Caso todas as rotas devam utilizar, o middleware pode ser passado em app.use([middleware])
+
+                const acountAuth = (req, res, next) => {
+                        const { cpf } = req.params;
+                        const customer = customers.find((customer) => customer.cpf == cpf);
+                        if (!customer) {
+                        return res.status(400).json({ error: "Conta não encontrada" });
+                        }
+                        res.customer = customer;
+                        return next();
+                };
+                app.get("/statement/:cpf", acountAuth, (req, res) => {
+                        const { customer } = res
+                        console.log("Statement: " + customer.statement);
+                        return res.json(customer.statement);
+                });
