@@ -14,7 +14,20 @@ const customers = [
     name: "Mauricio",
     cpf: "0000000000",
     id,
-    statement: [{ description: "Deposito Mauricio", amount: 57.5, type: 'credit' }, { description: 'Deposito', amount: 50, type: 'credit' }],
+    statement: [
+      {
+        description: "Deposito Mauricio",
+        amount: 57.5,
+        type: "credit",
+        createdAt: new Date('2022-12-29 15:00:00'),
+      },
+      {
+        description: "Deposito",
+        amount: 50,
+        type: "credit",
+        createdAt: new Date('2022-12-29 15:00:00'),
+      },
+    ],
   },
 ];
 
@@ -31,13 +44,13 @@ const acountAuth = (req, res, next) => {
 
 const getBalance = (statement) => {
   const balance = statement.reduce((acc, operation) => {
-    if (operation.type === 'credit') {
-      return acc + operation.amount
+    if (operation.type === "credit") {
+      return acc + operation.amount;
     } else {
-      return acc - operation.amount
+      return acc - operation.amount;
     }
-  }, 0)
-  return balance
+  }, 0);
+  return balance;
 };
 
 app.post("/create/acount", (req, res) => {
@@ -65,7 +78,12 @@ app.get("/statement/", acountAuth, (req, res) => {
 app.post("/deposit", acountAuth, (req, res) => {
   const { description, amount } = req.body;
   const { customer } = req;
-  const deposit = {description, amount, createdAt: new Date().toLocaleString(), type: 'credit'}
+  const deposit = {
+    description,
+    amount,
+    createdAt: new Date(),
+    type: "credit",
+  };
 
   customer.statement.push(deposit);
   console.log(customer.statement);
@@ -75,18 +93,33 @@ app.post("/deposit", acountAuth, (req, res) => {
 app.post("/withdraw", acountAuth, (req, res) => {
   const { amount } = req.body;
   const { customer } = req;
-  const balance = getBalance(customer.statement)
-  console.log(balance)
+  const balance = getBalance(customer.statement);
+  console.log(balance);
 
   if (balance < amount) {
-    return res.status(400).json({error: 'Saldo insuficiente', saldo: balance})
+    return res
+      .status(400)
+      .json({ error: "Saldo insuficiente", saldo: balance });
   }
-  
-  const withdraw = {amount, createdAt: new Date().toLocaleString(), type: 'debit'}
+
+  const withdraw = { amount, createdAt: new Date(), type: "debit" };
 
   customer.statement.push(withdraw);
   console.log(customer.statement);
   return res.status(201).json({ msg: "Valor removido", saldo: balance });
+});
+
+app.get("/statement/date", acountAuth, (req, res) => {
+  const { customer } = req;
+  const { date } = req.query;
+  const dateFormat = new Date(date + " 00:00")
+
+  const state = customer.statement.filter(
+    (state) =>
+    state.createdAt.toDateString() === new Date(dateFormat).toDateString()
+  );
+  console.log(state);
+  return res.json(state);
 });
 
 app.listen(8080, () => {

@@ -122,6 +122,23 @@ cliente
                         return res.status(201).json({ msg: "Valor removido", saldo: balance });
                 });
 
+- Extrato por periodo
+        - Formatamos a data para que seja possível buscar os dados independente do horário
+        - Utilizamos o metodo filter para trazer todos os statements que tiverem a data igual à data recebida e formatada
+
+                app.get("/statement/date", acountAuth, (req, res) => {
+                        const { customer } = req;
+                        const { date } = req.query;
+                        const dateFormat = new Date(date + " 00:00")
+
+                        const state = customer.statement.filter(
+                        (state) =>
+                        state.createdAt.toDateString() === new Date(dateFormat).toDateString()
+                        );
+                        console.log(state);
+                        return res.json(state);
+                });
+
 *Middlewares*
 
 - Funções que ficam entre as requisicoes e as respostas
