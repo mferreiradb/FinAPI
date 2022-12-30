@@ -105,6 +105,23 @@ cliente
         - A função reduce recebe dois parâmetros: o primeiro é a função que será executada, o segundo é a inicialização do valor que será incrementado
         - Ela há um terceiro parametro que é opcional e pode ser passado após o bloco de código. Este parametro, determina o valor inicial da função
 
+                app.post("/withdraw", acountAuth, (req, res) => {
+                        const { amount } = req.body;
+                        const { customer } = req;
+                        const balance = getBalance(customer.statement)
+                        console.log(balance)
+
+                        if (balance < amount) {
+                        return res.status(400).json({error: 'Saldo insuficiente', saldo: balance})
+                        }
+                        
+                        const withdraw = {amount, createdAt: new Date().toLocaleString(), type: 'debit'}
+
+                        customer.statement.push(withdraw);
+                        console.log(customer.statement);
+                        return res.status(201).json({ msg: "Valor removido", saldo: balance });
+                });
+
 *Middlewares*
 
 - Funções que ficam entre as requisicoes e as respostas
