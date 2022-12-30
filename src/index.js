@@ -25,7 +25,7 @@ const acountAuth = (req, res, next) => {
   if (!customer) {
     return res.status(400).json({ error: "Conta não encontrada" });
   }
-  res.customer = customer;
+  req.customer = customer;
   return next();
 };
 
@@ -46,14 +46,24 @@ app.post("/create/acount", (req, res) => {
 });
 
 app.get("/statement/", acountAuth, (req, res) => {
-  const { customer } = res;
+  const { customer } = req;
   console.log("Statement: " + customer.statement);
   return res.json(customer.statement);
 });
 
 app.post("/deposit", acountAuth, (req, res) => {
   const { description, amount } = req.body;
-  const { customer } = res;
+  const { customer } = req;
+  const deposit = {description, amount, createdAt: new Date().toLocaleString(), type: 'credit'}
+
+  customer.statement.push(deposit);
+  console.log(customer.statement);
+  return res.status(201).json({ msg: "Valor adicionado" });
+});
+
+app.post("/withdraw", acountAuth, (req, res) => {
+  const { amount } = req.body;
+  const { customer } = req;
   const deposit = {description, amount, createdAt: new Date().toLocaleString(), type: 'credit'}
 
   customer.statement.push(deposit);

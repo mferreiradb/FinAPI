@@ -114,11 +114,11 @@ cliente
                         if (!customer) {
                         return res.status(400).json({ error: "Conta não encontrada" });
                         }
-                        res.customer = customer;
+                        req.customer = customer;
                         return next();
                 };
                 app.get("/statement/:cpf", acountAuth, (req, res) => {
-                        const { customer } = res
+                        const { customer } = req
                         console.log("Statement: " + customer.statement);
                         return res.json(customer.statement);
                 });
