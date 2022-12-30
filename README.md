@@ -8,7 +8,7 @@
 
 - [x] Deve ser possivel realizar um deposito
 
-- [] Deve ser possivel realizar um saque
+- [x] Deve ser possivel realizar um saque
 
 - [] Deve ser possivel buscar o extrato bancario do 
 cliente por data
@@ -30,11 +30,11 @@ cliente
 
 - [x] Não deve ser possivel fazer deposito em uma conta nao existente
 
-- [] Não deve ser possivel fazer um saque em uma conta nao existente
+- [x] Não deve ser possivel fazer um saque em uma conta nao existente
+
+- [x] Não deve ser possivel fazer saque quando o saldo for insuficiente
 
 - [] Não deve ser possivel excluir uma conta nao existente
-
-- [] Não deve ser possivel fazer saque quando o saldo for insuficiente
 
 *Dependencias*
 
@@ -97,6 +97,13 @@ cliente
                         console.log("Statement: " + customer.statement)
                         return res.json(customer.statement)
                 })
+
+- Somar valores para total de saldo
+        - Utiliza-se a função reduce()
+        - Utilizada para reduzir um array a um único valor, podendo este valor ser um número, string ou objeto
+        - A função dentro de reduce recebe dois parâmetros: o primeiro é o valor que está sendo concatenado - elemento que receberá os valores concatenados e os transformará em uma string -, o segundo é o elemento do array que está sendo iterado
+        - A função reduce recebe dois parâmetros: o primeiro é a função que será executada, o segundo é a inicialização do valor que será incrementado
+        - Ela há um terceiro parametro que é opcional e pode ser passado após o bloco de código. Este parametro, determina o valor inicial da função
 
 *Middlewares*
 

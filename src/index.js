@@ -14,7 +14,7 @@ const customers = [
     name: "Mauricio",
     cpf: "0000000000",
     id,
-    statement: [{ description: "Deposito Mauricio", amount: 57.5 }, { description: 'Deposito', amount: 50 }],
+    statement: [{ description: "Deposito Mauricio", amount: 57.5, type: 'credit' }, { description: 'Deposito', amount: 50, type: 'credit' }],
   },
 ];
 
@@ -27,6 +27,17 @@ const acountAuth = (req, res, next) => {
   }
   req.customer = customer;
   return next();
+};
+
+const getBalance = (statement) => {
+  const balance = statement.reduce((acc, operation) => {
+    if (operation.type === 'credit') {
+      return acc + operation.amount
+    } else {
+      return acc - operation.amount
+    }
+  }, 0)
+  return balance
 };
 
 app.post("/create/acount", (req, res) => {
@@ -64,11 +75,18 @@ app.post("/deposit", acountAuth, (req, res) => {
 app.post("/withdraw", acountAuth, (req, res) => {
   const { amount } = req.body;
   const { customer } = req;
-  const deposit = {description, amount, createdAt: new Date().toLocaleString(), type: 'credit'}
+  const balance = getBalance(customer.statement)
+  console.log(balance)
 
-  customer.statement.push(deposit);
+  if (balance < amount) {
+    return res.status(400).json({error: 'Saldo insuficiente', saldo: balance})
+  }
+  
+  const withdraw = {amount, createdAt: new Date().toLocaleString(), type: 'debit'}
+
+  customer.statement.push(withdraw);
   console.log(customer.statement);
-  return res.status(201).json({ msg: "Valor adicionado" });
+  return res.status(201).json({ msg: "Valor removido", saldo: balance });
 });
 
 app.listen(8080, () => {
