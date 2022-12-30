@@ -6,7 +6,7 @@
 
 - [x] Deve ser possivel buscar o extrato bancário
 
-- [] Deve ser possivel realizar um deposito
+- [x] Deve ser possivel realizar um deposito
 
 - [] Deve ser possivel realizar um saque
 
@@ -28,7 +28,7 @@ cliente
 
 - [x] Não deve ser possivel buscar o extrato em uma conta nao existente
 
-- [] Não deve ser possivel fazer deposito em uma conta nao existente
+- [x] Não deve ser possivel fazer deposito em uma conta nao existente
 
 - [] Não deve ser possivel fazer um saque em uma conta nao existente
 
