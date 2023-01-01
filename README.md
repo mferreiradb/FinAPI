@@ -36,9 +36,9 @@ cliente
 
 - [x] Não deve ser possivel fazer saque quando o saldo for insuficiente
 
-- [] Não deve ser possivel excluir uma conta nao existente
+- [x] Não deve ser possivel excluir uma conta nao existente
 
-- [] Não deve ser possível consultar o saldo sem um usuário definido
+- [x] Não deve ser possível consultar o saldo sem um usuário definido
 
 *Dependencias*
 
