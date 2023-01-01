@@ -18,7 +18,7 @@ cliente
 
 - [x] Deve ser possivel obter dados da conta o cliente
 
-- [] Deve ser possivel eletar uma conta
+- [x] Deve ser possivel eletar uma conta
 
 
 
@@ -138,6 +138,9 @@ cliente
                         console.log(state);
                         return res.json(state);
                 });
+
+- Deleção de conta
+        - Utiliza-se o método Splice, que recebe dois parametros: o primeiro é onde irá iniciar a exlusão e a segunda será a quantidade de elementos excluídos
 
 *Middlewares*
 

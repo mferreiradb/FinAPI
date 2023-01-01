@@ -74,7 +74,7 @@ const getBalance = (statement) => {
 
 app.post("/create/acount", (req, res) => {
   const { name, cpf } = req.body;
-  const costumerExists = costumers.some((costumer) => costumer.cpf == cpf);
+  const costumerExists = customers.some((costumer) => costumer.cpf == cpf);
 
   if (costumerExists) {
     console.log("Titular já cadastrado");
@@ -82,9 +82,9 @@ app.post("/create/acount", (req, res) => {
       .status(400)
       .json({ erro: "Titular já cadastrado. Tente com um novo titular!" });
   } else {
-    costumers.push({ name, cpf, id: uuid(), statement: [] });
-    console.log(costumers);
-    return res.status(201).send("Titular cadastrado com sucesso");
+    customers.push({ name, cpf, id: uuid(), statement: [] });
+    console.log(customers);
+    return res.status(201).json({msg: "Titular cadastrado com sucesso"});
   }
 });
 
@@ -147,13 +147,25 @@ app.put('/update', acountAuth, (req, res) => {
   
   customer.name = name
   
-  res.status(201).send('Alteração realizada com sucesso')
+  res.status(201).json({msg: 'Alteração realizada com sucesso'})
 })
 
 app.get('/customer', acountAuth, (req, res) => {
   const { customer } = req
 
   res.json({customer})
+})
+
+app.delete('/delete', acountAuth, (req, res) => {
+  const { customer } = req
+  
+  customers.splice(customer, 1)
+
+  return res.status(200).json({customer: customer})
+})
+
+app.get('/customers', (req, res) => {
+  return res.json(customers)
 })
 
 app.listen(8080, () => {
