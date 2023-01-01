@@ -74,9 +74,9 @@ const getBalance = (statement) => {
 
 app.post("/create/acount", (req, res) => {
   const { name, cpf } = req.body;
-  const costumerExists = customers.some((costumer) => costumer.cpf == cpf);
+  const customerExists = customers.some((customer) => customer.cpf == cpf);
 
-  if (costumerExists) {
+  if (customerExists) {
     console.log("Titular já cadastrado");
     return res
       .status(400)
