@@ -80,7 +80,7 @@ app.post("/create/acount", (req, res) => {
     console.log("Titular já cadastrado");
     return res
       .status(400)
-      .json({ erro: "Titular já cadastrado. Tente com um novo titular!" });
+      .json({ erro: "Titular já cadastrado. Tente com um novo titular!"});
   } else {
     customers.push({ name, cpf, id: uuid(), statement: [] });
     console.log(customers);
@@ -161,7 +161,7 @@ app.delete('/delete', acountAuth, (req, res) => {
   
   customers.splice(customer, 1)
 
-  return res.status(200).json({customer: customer})
+  return res.status(200).json({customers: customers})
 })
 
 app.get('/customers', (req, res) => {
