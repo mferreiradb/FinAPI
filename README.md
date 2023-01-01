@@ -38,7 +38,7 @@ cliente
 
 - [] Não deve ser possivel excluir uma conta nao existente
 
-- [] Não deve ser possível consultr o saldo sem um usuário definido
+- [] Não deve ser possível consultar o saldo sem um usuário definido
 
 *Dependencias*
 
