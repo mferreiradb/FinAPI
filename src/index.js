@@ -168,6 +168,13 @@ app.get('/customers', (req, res) => {
   return res.json(customers)
 })
 
+app.get('/balance', acountAuth, (req, res) => {
+  const { customer } = req
+  const balance = getBalance(customer.statement)
+
+  return res.json({balance: balance})
+})
+
 app.listen(8080, () => {
   console.log("Servidor online na url http://localhost:8080");
 });

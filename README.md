@@ -20,6 +20,8 @@ cliente
 
 - [x] Deve ser possivel eletar uma conta
 
+- [x] Deve ser possivel consultar o saldo
+
 
 
 *Regras de negocio*
