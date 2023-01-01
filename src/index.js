@@ -29,6 +29,25 @@ const customers = [
       },
     ],
   },
+  {
+    name: "Gabriel",
+    cpf: "0000000001",
+    id,
+    statement: [
+      {
+        description: "Deposito Gabriel",
+        amount: 120,
+        type: "credit",
+        createdAt: new Date('2022-12-29 15:00:00'),
+      },
+      {
+        description: "Deposito",
+        amount: 800.11,
+        type: "credit",
+        createdAt: new Date('2022-12-29 15:00:00'),
+      },
+    ]
+  },
 ];
 
 //MIDDLEWARE PARA AUTENTICAÇÃO DE EXISTENCIA DE CONTA
@@ -121,6 +140,21 @@ app.get("/statement/date", acountAuth, (req, res) => {
   console.log(state);
   return res.json(state);
 });
+
+app.put('/update', acountAuth, (req, res) => {
+  const { name } = req.body
+  const { customer } = req
+  
+  customer.name = name
+  
+  res.status(201).send('Alteração realizada com sucesso')
+})
+
+app.get('/customer', acountAuth, (req, res) => {
+  const { customer } = req
+
+  res.json({customer})
+})
 
 app.listen(8080, () => {
   console.log("Servidor online na url http://localhost:8080");

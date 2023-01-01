@@ -13,10 +13,10 @@
 - [x] Deve ser possivel buscar o extrato bancario do 
 cliente por data
 
-- [] Deve ser possivel atualizar os dados da conta do 
+- [x] Deve ser possivel atualizar os dados da conta do 
 cliente
 
-- [] Deve ser possivel obter dados da conta o cliente
+- [x] Deve ser possivel obter dados da conta o cliente
 
 - [] Deve ser possivel eletar uma conta
 
