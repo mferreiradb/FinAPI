@@ -1,5 +1,7 @@
 **FinAPI - API Financeira**
 
+![Utilizacao](src/assets/FinAPI.gif)
+
 *Requisitos*
 
 - [x] Deve ser possivel criar uma consta
