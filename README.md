@@ -134,7 +134,7 @@ cliente
 *Extrato por periodo*
 
 - Formatamos a data para que seja possível buscar os dados independente do horário
-- É necessáriio formatar como new Date(date + " 00:00"), pois a data será recebida como uma string contendo apenas dia/mês/ano, de forma que sem a formatação, não é possível utilizar o método toDateString()
+- É necessário formatar como new Date(date + " 00:00"), pois a data será recebida como uma string contendo apenas dia/mês/ano, de forma que sem a formatação, não é possível utilizar o método toDateString()
 - Utilizamos o metodo filter para trazer todos os statements que tiverem a data igual à data recebida e formatada
 
         app.get("/statement/date", acountAuth, (req, res) => {
