@@ -114,40 +114,40 @@ cliente
         - A função reduce recebe dois parâmetros: o primeiro é a função que será executada, o segundo é a inicialização do valor que será incrementado
         - Ela há um terceiro parametro que é opcional e pode ser passado após o bloco de código. Este parametro, determina o valor inicial da função
 
-                                        app.post("/withdraw", acountAuth, (req, res) => {
-                                                const { amount } = req.body;
-                                                const { customer } = req;
-                                                const balance = getBalance(customer.statement)
-                                                console.log(balance)
+                app.post("/withdraw", acountAuth, (req, res) => {
+                        const { amount } = req.body;
+                        const { customer } = req;
+                        const balance = getBalance(customer.statement)
+                        console.log(balance)
 
-                                                if (balance < amount) {
-                                                return res.status(400).json({error: 'Saldo insuficiente', saldo: balance})
-                                                }
-                                                
-                                                const withdraw = {amount, createdAt: new Date().toLocaleString(), type: 'debit'}
+                        if (balance < amount) {
+                        return res.status(400).json({error: 'Saldo insuficiente', saldo: balance})
+                        }
+                        
+                        const withdraw = {amount, createdAt: new Date().toLocaleString(), type: 'debit'}
 
-                                                customer.statement.push(withdraw);
-                                                console.log(customer.statement);
-                                                return res.status(201).json({ msg: "Valor removido", saldo: balance });
-                                        });
+                        customer.statement.push(withdraw);
+                        console.log(customer.statement);
+                        return res.status(201).json({ msg: "Valor removido", saldo: balance });
+                });
 
 - Extrato por periodo
 
         - Formatamos a data para que seja possível buscar os dados independente do horário
         - Utilizamos o metodo filter para trazer todos os statements que tiverem a data igual à data recebida e formatada
 
-                                        app.get("/statement/date", acountAuth, (req, res) => {
-                                                const { customer } = req;
-                                                const { date } = req.query;
-                                                const dateFormat = new Date(date + " 00:00")
+                app.get("/statement/date", acountAuth, (req, res) => {
+                        const { customer } = req;
+                        const { date } = req.query;
+                        const dateFormat = new Date(date + " 00:00")
 
-                                                const state = customer.statement.filter(
-                                                (state) =>
-                                                state.createdAt.toDateString() === new Date(dateFormat).toDateString()
-                                                );
-                                                console.log(state);
-                                                return res.json(state);
-                                        });
+                        const state = customer.statement.filter(
+                        (state) =>
+                        state.createdAt.toDateString() === new Date(dateFormat).toDateString()
+                        );
+                        console.log(state);
+                        return res.json(state);
+                });
 
 - Deleção de conta
 
@@ -161,20 +161,20 @@ cliente
 
 - Podem ser utilizados de duas formas
 
-        - Caso apenas alumas rotas devam utilizar, o middleware deve ser passado na rota, após a definição do endpoint
+        - Caso apenas algumas rotas devam utilizar, o middleware deve ser passado na rota, após a definição do endpoint
         - Caso todas as rotas devam utilizar, o middleware pode ser passado em app.use([middleware])
 
-                                        const acountAuth = (req, res, next) => {
-                                                const { cpf } = req.params;
-                                                const customer = customers.find((customer) => customer.cpf == cpf);
-                                                if (!customer) {
-                                                return res.status(400).json({ error: "Conta não encontrada" });
-                                                }
-                                                req.customer = customer;
-                                                return next();
-                                        };
-                                        app.get("/statement/:cpf", acountAuth, (req, res) => {
-                                                const { customer } = req
-                                                console.log("Statement: " + customer.statement);
-                                                return res.json(customer.statement);
-                                        });
+                        const acountAuth = (req, res, next) => {
+                                const { cpf } = req.params;
+                                const customer = customers.find((customer) => customer.cpf == cpf);
+                                if (!customer) {
+                                return res.status(400).json({ error: "Conta não encontrada" });
+                                }
+                                req.customer = customer;
+                                return next();
+                        };
+                        app.get("/statement/:cpf", acountAuth, (req, res) => {
+                                const { customer } = req
+                                console.log("Statement: " + customer.statement);
+                                return res.json(customer.statement);
+                        });
