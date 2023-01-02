@@ -61,7 +61,7 @@ cliente
         
         - A V4 é a mais utilizada e gera numeros aleatórios
 
-                npm i uuid
+                                npm i uuid
 
 *Dados da conta*
 
