@@ -64,21 +64,18 @@ cliente
 
 *Dados da conta*
 
-- Name
-        - Nome do titular
-        
-- ID
-        - ID da conta
-        
-- CPF
-        - CPF do titular
-        
-- Statement
-        - Extrato da conta
+- Name do titular
+
+- ID da conta
+
+- CPF do titular
+
+- Statement - Extrato da conta
 
 *Detalhamentos*
 
 - Validação de CPF
+
         - Uso da função some() para verificar se o cpf passado pelo body já existe na base de dados
         - A função some() faz uma iteração no array e retorna um valor booleano de acordo com a condição
 
