@@ -60,16 +60,19 @@ cliente
 - Necessário informar a versão do uuid que será utilizado
 - A V4 é a mais utilizada e gera numeros aleatórios
 
-                                npm i uuid
+        npm i uuid
 
 *Dados da conta*
 
 - Name
         - Nome do titular
+        
 - ID
         - ID da conta
+        
 - CPF
         - CPF do titular
+        
 - Statement
         - Extrato da conta
 
