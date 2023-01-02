@@ -167,7 +167,7 @@ cliente
 - Caso todas as rotas devam utilizar, o middleware pode ser passado em app.use([middleware])
 
         const acountAuth = (req, res, next) => {
-                const { cpf } = req.params;
+                const { cpf } = req.headers;
                 const customer = customers.find((customer) => customer.cpf == cpf);
                 if (!customer) {
                 return res.status(400).json({ error: "Conta não encontrada" });
