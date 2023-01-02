@@ -72,9 +72,9 @@ cliente
 
 - Statement - Extrato da conta
 
-*Detalhamentos*
+**Detalhamentos**
 
-- Validação de CPF
+*Validação de CPF*
 
 - Uso da função some() para verificar se o cpf passado pelo body já existe na base de dados
 - A função some() faz uma iteração no array e retorna um valor booleano de acordo com a condição
@@ -93,7 +93,7 @@ cliente
                 }
         });
 
-- Buscar extradto
+*Buscar extradto*
 
 - Utilizada a função find() para encontrar o extrato de um determinado cliente
 - Find retorna o primeiro elemento encontrado que cumpra as condições estabelecidas
@@ -106,7 +106,7 @@ cliente
                 return res.json(customer.statement)
         })
 
-- Somar valores para total de saldo
+*Somar valores para total de saldo*
 
 - Utiliza-se a função reduce()
 - Utilizada para reduzir um array a um único valor, podendo este valor ser um número, string ou objeto
@@ -131,7 +131,7 @@ cliente
                 return res.status(201).json({ msg: "Valor removido", saldo: balance });
         });
 
-- Extrato por periodo
+*Extrato por periodo*
 
 - Formatamos a data para que seja possível buscar os dados independente do horário
 - Utilizamos o metodo filter para trazer todos os statements que tiverem a data igual à data recebida e formatada
@@ -149,11 +149,11 @@ cliente
                 return res.json(state);
         });
 
-- Deleção de conta
+-Deleção de conta-
 
         - Utiliza-se o método Splice, que recebe dois parametros: o primeiro é onde irá iniciar a exlusão e a segunda será a quantidade de elementos excluídos
 
-*Middlewares*
+**Middlewares**
 
 - Funções que ficam entre as requisicoes e as respostas
 
