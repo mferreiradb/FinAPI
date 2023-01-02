@@ -55,13 +55,12 @@ cliente
         npm i express
 
 - UUID
+
         - Biblioteca para gerar uuid
-        
         - Necessário informar a versão do uuid que será utilizado
-        
         - A V4 é a mais utilizada e gera numeros aleatórios
 
-                                npm i uuid
+                npm i uuid
 
 *Dados da conta*
 
