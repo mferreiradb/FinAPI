@@ -6,7 +6,7 @@ const id = uuid();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-	res.json({ msg: 'Online' });
+	res.json({ msg: 'API Online' });
 });
 
 const customers = [
@@ -80,11 +80,11 @@ app.post('/create/acount', (req, res) => {
 		console.log('Titular já cadastrado');
 		return res
 			.status(400)
-			.json({ erro: 'Titular já cadastrado. Tente com um novo titular!' , titular: customerExists});
+			.json({ erro: 'Titular já cadastrado. Tente com um novo titular!', titular: customerExists });
 	} else {
 		customers.push({ name, cpf, id: uuid(), statement: [] });
 		console.log(customers);
-		return res.status(201).json({msg: 'Titular cadastrado com sucesso'});
+		return res.status(201).json({ msg: 'Titular cadastrado com sucesso' });
 	}
 });
 
@@ -144,24 +144,24 @@ app.get('/statement/date', acountAuth, (req, res) => {
 app.put('/update', acountAuth, (req, res) => {
 	const { name } = req.body;
 	const { customer } = req;
-  
+
 	customer.name = name;
-  
-	res.status(201).json({msg: 'Alteração realizada com sucesso'});
+
+	res.status(201).json({ msg: 'Alteração realizada com sucesso' });
 });
 
 app.get('/customer', acountAuth, (req, res) => {
 	const { customer } = req;
 
-	res.json({customer});
+	res.json({ customer });
 });
 
 app.delete('/delete', acountAuth, (req, res) => {
 	const { customer } = req;
-  
+
 	customers.splice(customer, 1);
 
-	return res.status(200).json({customer: customer});
+	return res.status(200).json({ customer: customer });
 });
 
 app.get('/customers', (req, res) => {
@@ -172,7 +172,7 @@ app.get('/balance', acountAuth, (req, res) => {
 	const { customer } = req;
 	const balance = getBalance(customer.statement);
 
-	return res.json({balance: balance});
+	return res.json({ balance: balance });
 });
 
 app.listen(8080, () => {
