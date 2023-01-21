@@ -1,17 +1,17 @@
 {
-  "name": "chapter-1",
+  "name": "fin-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "mferreiradb",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "@vercel/node": "^2.8.15"
   },
   "devDependencies": {
     "eslint": "^8.31.0",
