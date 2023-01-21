@@ -2,16 +2,16 @@
     "name": "FinAPI",
     "version": 1,
     "public": true,
-    "builds": [
+    "build": [
         {
-            "dest": "src/index.js",
+            "src": "api/index.js",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "src/index.js"
+            "dest": "api/index.js"
         }
     ]
 }
